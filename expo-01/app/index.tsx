@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, View, ImageComponent } from "react-native";
 
 export default function Index() {
   return (
@@ -9,7 +9,9 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <ImageComponent> </ImageComponent>
+      <Text>Rafael de assis</Text>
+      <Text>Este app esta quebrado</Text>
     </View>
   );
 }
