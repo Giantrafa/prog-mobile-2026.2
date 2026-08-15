@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "pdm-2026-2-expo-01",
-    "slug": "pdm-2026-2-expo-01",
+    "name": "expo-01",
+    "slug": "expo-01",
     "version": "1.0.0",
-    "owner": "unicap",
+    "owner": "unicap-nova",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "expo01",
