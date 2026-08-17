@@ -3,6 +3,7 @@ Para Rodar {
     2 rodar: npm run goTunnel
 }
 
+
 Para Rodar Em Qualquer Lugar {
     1 fazer git clone
     2 fazer cd para dentro de expo-01
