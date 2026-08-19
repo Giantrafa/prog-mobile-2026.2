@@ -1,5 +1,6 @@
 import { Text, View } from "react-native";
-import ImageComponent from "../components/Image";
+import Profile from "../components/Profile";
+
 
 export default function Index() {
   return (
@@ -9,10 +10,8 @@ export default function Index() {
         justifyContent: "center",
         alignItems: "center",
       }}
-    >
-      <ImageComponent/>       
-      <Text>Rafael de assis</Text>
-      <Text>Este app esta quebrado</Text>
+    >         
+    <Profile/>
     </View>
   );
 }

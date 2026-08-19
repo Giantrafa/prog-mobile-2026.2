@@ -1,6 +1,6 @@
 import { Image as RNImage } from 'react-native';
 
-export default function ImageComponent() {
+export default function Image() {
   return (
     <RNImage
       source={require('./imagens/carro.jpg')}
