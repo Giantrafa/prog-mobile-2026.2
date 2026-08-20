@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import Profile from "../components/Profile";
+import MiniBio from "../components/MiniBio";
 
 
 export default function Index() {
@@ -10,8 +10,12 @@ export default function Index() {
         justifyContent: "center",
         alignItems: "center",
       }}
-    >         
-    <Profile/>
+    >
+      <text>
+        App criado para a diciplina Proramação para Dispositivos Móveis
+      </text>
+
+    <MiniBio/>
     </View>
   );
 }

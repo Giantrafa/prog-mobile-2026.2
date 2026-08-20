@@ -1,11 +1,14 @@
-import Image from "./Image";
+import { Image as RNImage } from 'react-native';
 
 export default function Profile() {
     return(
         <>
-        <Image/>
+        <RNImage
+      source={require('./imagens/carro.jpg')}
+      style={{ width: 200, height: 200 }}
+        />
             <text>
-            exemplo 1
+            exemplo 2
             </text>        
         </>
     );

@@ -1,9 +1,9 @@
-import Image from "./Image";
+import { Profile } from "./Profile";
 
-export default function Profile() {
+export default function MiniBio(){
     return(
-        <>
-        <Image/>
+        <>  
+        <Profile/>
             <text>
             exemplo 1
             </text>        
