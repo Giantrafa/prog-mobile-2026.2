@@ -1,7 +1,6 @@
 import { Text, View } from "react-native";
 import MiniBio from "../components/MiniBio";
 
-
 export default function Index() {
   return (
     <View
@@ -11,11 +10,10 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <text>
-        App criado para a diciplina Proramação para Dispositivos Móveis
-      </text>
-
-    <MiniBio/>
+      <Text>
+        App criado para a disciplina Programação para Dispositivos Móveis
+      </Text>
+      <MiniBio />
     </View>
   );
 }

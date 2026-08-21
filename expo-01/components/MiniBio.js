@@ -1,12 +1,15 @@
-import { Profile } from "./Profile";
+import { Text } from "react-native";
+import Profile from "./Profile";
 
-export default function MiniBio(){
-    return(
-        <>  
-        <Profile/>
-            <text>
-            exemplo 1
-            </text>        
-        </>
-    );
+export default function MiniBio() {
+  return (
+    <>
+      <Profile />
+
+      <Text>
+        Estudande do Curso Sistemas Para Internet
+        UNICAP
+      </Text>
+    </>
+  );
 }

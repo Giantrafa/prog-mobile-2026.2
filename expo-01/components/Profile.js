@@ -1,15 +1,16 @@
-import { Image as RNImage } from 'react-native';
+import { Image, Text } from "react-native";
 
 export default function Profile() {
-    return(
-        <>
-        <RNImage
-      source={require('./imagens/carro.jpg')}
-      style={{ width: 200, height: 200 }}
-        />
-            <text>
-            exemplo 2
-            </text>        
-        </>
-    );
+  return (
+    <>
+      <Image
+        source={require("./imagens/selfie.jpeg")}
+        style={{ width: 200, height: 200 }}
+      />
+
+      <Text>
+        Rafael de Assis
+      </Text>
+    </>
+  );
 }
