@@ -3,6 +3,7 @@
     "name": "expo-jogo-dado",
     "slug": "expo-jogo-dado",
     "version": "1.0.0",
+    "owner": "unicap-nova",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "expojogodado",
@@ -37,6 +38,18 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "916303f0-4330-4f4b-8c13-5900769cfc2e"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/916303f0-4330-4f4b-8c13-5900769cfc2e"
     }
   }
 }
