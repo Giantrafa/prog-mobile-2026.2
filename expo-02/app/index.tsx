@@ -11,7 +11,7 @@ export default function Index() {
       }}
     >
       <Text>Programação para Dispositivos Móveis</Text>
-      <Link href="/listaTarefa">Tarefas</Link>
+      <Link href="/listaTarefas">Tarefas</Link>
     </View>
   );
 } 
