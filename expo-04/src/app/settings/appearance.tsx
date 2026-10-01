@@ -1,43 +1,30 @@
-import { StyleSheet, Text, View } from 'react-native';
-import Slider from '@react-native-community/slider';
+import { StyleSheet, View } from 'react-native';
+import { Button, Card, Text } from 'react-native-paper';
 
 export default function AppearanceScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Aparência</Text>
+      <Text variant="headlineMedium" style={styles.title}>
+        Aparência
+      </Text>
 
-      <View style={styles.card}>
-        <Text style={styles.label}>Tamanho</Text>
+      <Card>
+        <Card.Content>
+          <Text variant="titleMedium">Android</Text>
 
-        <Slider
-          style={styles.slider}
-          minimumValue={0}
-          maximumValue={100}
-          value={50}
-        />
-      </View>
+          <Text variant="bodyMedium" style={styles.description}>
+            Configure a aparência do aplicativo para Android.
+          </Text>
 
-      <View style={styles.card}>
-        <Text style={styles.label}>Transparência</Text>
-
-        <Slider
-          style={styles.slider}
-          minimumValue={0}
-          maximumValue={100}
-          value={70}
-        />
-      </View>
-
-      <View style={styles.card}>
-        <Text style={styles.label}>Arredondamento</Text>
-
-        <Slider
-          style={styles.slider}
-          minimumValue={0}
-          maximumValue={100}
-          value={30}
-        />
-      </View>
+          <Button
+            mode="contained"
+            icon="android"
+            onPress={() => {}}
+          >
+            Usar aparência Android
+          </Button>
+        </Card.Content>
+      </Card>
     </View>
   );
 }
@@ -49,26 +36,11 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginBottom: 25,
+    marginBottom: 20,
   },
 
-  card: {
-    padding: 18,
-    marginBottom: 15,
-    borderRadius: 20,
-    backgroundColor: '#eeeeee',
-  },
-
-  label: {
-    fontSize: 17,
-    fontWeight: '600',
-    marginBottom: 10,
-  },
-
-  slider: {
-    width: '100%',
-    height: 40,
+  description: {
+    marginTop: 8,
+    marginBottom: 20,
   },
 });
