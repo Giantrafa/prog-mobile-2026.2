@@ -2,7 +2,11 @@ import { StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { List, Text } from 'react-native-paper';
 
+import { useAuth } from '@/auth/AuthContext';
+
 export default function SettingsScreen() {
+  const { signOut } = useAuth();
+
   return (
     <View style={styles.container}>
       <Text variant="headlineMedium" style={styles.title}>
@@ -43,6 +47,15 @@ export default function SettingsScreen() {
             <List.Icon {...props} icon="chevron-right" />
           )}
           onPress={() => router.push('/settings/appearance')}
+        />
+
+        <List.Item
+          title="Sair"
+          description="Encerrar a sessão neste aparelho"
+          left={(props) => (
+            <List.Icon {...props} icon="logout" />
+          )}
+          onPress={signOut}
         />
       </List.Section>
     </View>

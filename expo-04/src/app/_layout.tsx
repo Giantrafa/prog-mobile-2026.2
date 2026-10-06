@@ -1,25 +1,44 @@
-import { NativeTabs } from 'expo-router/unstable-native-tabs';
-import { PaperProvider } from 'react-native-paper';
+import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import { useColorScheme } from 'react-native';
+import { ActivityIndicator, MD3DarkTheme, MD3LightTheme, PaperProvider } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import { AuthProvider, useAuth } from '@/auth/AuthContext';
+
+function RootNavigator() {
+  const { user, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <ActivityIndicator style={{ flex: 1 }} size="large" />;
+  }
+
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Protected guard={!!user}>
+        <Stack.Screen name="(app)" />
+      </Stack.Protected>
+
+      <Stack.Protected guard={!user}>
+        <Stack.Screen name="(auth)" />
+      </Stack.Protected>
+    </Stack>
+  );
+}
 
 export default function RootLayout() {
+  const isDark = useColorScheme() === 'dark';
+
   return (
-    <PaperProvider>
-      <NativeTabs>
-        <NativeTabs.Trigger name="index">
-          <NativeTabs.Trigger.Icon sf="house.fill" />
-          <NativeTabs.Trigger.Label>Início</NativeTabs.Trigger.Label>
-        </NativeTabs.Trigger>
-
-        <NativeTabs.Trigger name="about">
-          <NativeTabs.Trigger.Icon sf="info.circle.fill" />
-          <NativeTabs.Trigger.Label>Sobre</NativeTabs.Trigger.Label>
-        </NativeTabs.Trigger>
-
-        <NativeTabs.Trigger name="settings">
-          <NativeTabs.Trigger.Icon sf="gearshape.fill" />
-          <NativeTabs.Trigger.Label>Configurações</NativeTabs.Trigger.Label>
-        </NativeTabs.Trigger>
-      </NativeTabs>
-    </PaperProvider>
+    <SafeAreaProvider>
+      <PaperProvider theme={isDark ? MD3DarkTheme : MD3LightTheme}>
+        <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
+          <StatusBar style={isDark ? 'light' : 'dark'} />
+          <AuthProvider>
+            <RootNavigator />
+          </AuthProvider>
+        </ThemeProvider>
+      </PaperProvider>
+    </SafeAreaProvider>
   );
 }
