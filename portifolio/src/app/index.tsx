@@ -15,38 +15,23 @@ export default function Home() {
       <View style={styles.hero}>
         <Avatar.Text
           size={96}
-          label={profile.initials}
+          label={profile.foto}
           style={{ backgroundColor: theme.colors.primary }}
         />
         <Text variant="headlineMedium" style={styles.center}>
           {profile.name}
         </Text>
-        <Text variant="titleMedium" style={{ color: theme.colors.primary }}>
-          {profile.role}
-        </Text>
+                
         <Text variant="bodyLarge" style={[styles.center, { color: theme.colors.onSurfaceVariant }]}>
           {profile.tagline}
         </Text>
       </View>
 
-      <SectionCard title="Bem-vindo(a)!">
+      <SectionCard title="Sobre este app">
         <Text variant="bodyMedium">
-          Conheça um pouco mais sobre mim e, se quiser conversar, é só entrar em contato.
+          Este app foi criado utilizando React Native com React paper com uma conexao a uma api REST para pegar certos dados, e uma area extra para entra em contato
         </Text>
-      </SectionCard>
-
-      <View style={styles.actions}>
-        <Button mode="contained" icon="account-outline" onPress={() => router.navigate("/sobre")}>
-          Sobre mim
-        </Button>
-        <Button
-          mode="outlined"
-          icon="message-text-outline"
-          onPress={() => router.navigate("/contato")}
-        >
-          Contato
-        </Button>
-      </View>
+      </SectionCard>      
     </Screen>
   );
 }

@@ -1,12 +1,12 @@
 // Edite aqui seus dados — todas as telas leem deste arquivo.
 export const profile = {
-  name: "Seu Nome", 
-  tagline: "Criando apps para iOS e Android com React Native e Expo.",
+  name: "Seu Nome",       
+  tagline: "Este e o meu portfólio Mobile onde reúno mimhas e experiências e projetos.",
   about:
-    "Sou estudante de desenvolvimento mobile, apaixonado(a) por criar interfaces simples e funcionais. Este portfólio reúne meus projetos e experiências.",
-  skills: ["React Native", "Expo", "TypeScript", "JavaScript", "Git", "UI/UX"],
+    "Sou estudante da area de Ti e Busco melhorar minhas abilidades e explorar outras areas para conhecimento",
+  skills: ["React Native", "React", "Linux", "Java", "Git", "UI/UX", "Redes","Banco de Dados","Back End","Front End"],
   education: [
-    { title: "Programação Mobile", subtitle: "2026.2" },
+    { title: "Cursando Sistemas Para Ineternet", subtitle: "2025.1" },
   ],
   contacts: [
     { label: "E-mail", value: "seu@email.com", icon: "email-outline", url: "mailto:seu@email.com" },
