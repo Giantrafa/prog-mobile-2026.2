@@ -5,6 +5,7 @@ import { ColorValue, useColorScheme } from "react-native";
 import { PaperProvider } from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
+import { CurriculoProvider } from "@/contexts/CurriculoContext";
 import { darkTheme, lightTheme, navigationDarkTheme, navigationLightTheme } from "@/theme";
 
 type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
@@ -22,31 +23,37 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <PaperProvider theme={paperTheme}>
-        <ThemeProvider value={isDark ? navigationDarkTheme : navigationLightTheme}>
-          <StatusBar style={isDark ? "light" : "dark"} />
-          <Tabs
-            screenOptions={{
-              tabBarActiveTintColor: paperTheme.colors.primary,
-              tabBarInactiveTintColor: paperTheme.colors.onSurfaceVariant,
-              tabBarStyle: { backgroundColor: paperTheme.colors.surface },
-              headerStyle: { backgroundColor: paperTheme.colors.surface },
-              headerTintColor: paperTheme.colors.onSurface,
-            }}
-          >
-            <Tabs.Screen
-              name="index"
-              options={{ title: "Início", tabBarIcon: tabIcon("home-outline") }}
-            />
-            <Tabs.Screen
-              name="sobre"
-              options={{ title: "Sobre", tabBarIcon: tabIcon("account-outline") }}
-            />
-            <Tabs.Screen
-              name="contato"
-              options={{ title: "Contato", tabBarIcon: tabIcon("message-text-outline") }}
-            />
-          </Tabs>
-        </ThemeProvider>
+        <CurriculoProvider>
+          <ThemeProvider value={isDark ? navigationDarkTheme : navigationLightTheme}>
+            <StatusBar style={isDark ? "light" : "dark"} />
+            <Tabs
+              screenOptions={{
+                tabBarActiveTintColor: paperTheme.colors.primary,
+                tabBarInactiveTintColor: paperTheme.colors.onSurfaceVariant,
+                tabBarStyle: { backgroundColor: paperTheme.colors.surface },
+                headerStyle: { backgroundColor: paperTheme.colors.surface },
+                headerTintColor: paperTheme.colors.onSurface,
+              }}
+            >
+              <Tabs.Screen
+                name="index"
+                options={{ title: "Início", tabBarIcon: tabIcon("home-outline") }}
+              />
+              <Tabs.Screen
+                name="sobre"
+                options={{ title: "Sobre", tabBarIcon: tabIcon("account-outline") }}
+              />
+              <Tabs.Screen
+                name="projetos"
+                options={{ title: "Projetos", tabBarIcon: tabIcon("folder-outline") }}
+              />
+              <Tabs.Screen
+                name="contato"
+                options={{ title: "Contato", tabBarIcon: tabIcon("message-text-outline") }}
+              />
+            </Tabs>
+          </ThemeProvider>
+        </CurriculoProvider>
       </PaperProvider>
     </SafeAreaProvider>
   );
