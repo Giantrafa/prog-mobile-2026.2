@@ -11,9 +11,9 @@ import { darkTheme, lightTheme, navigationDarkTheme, navigationLightTheme } from
 type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
 
 function tabIcon(name: IconName) {
-  return ({ color, size }: { color: ColorValue; size: number }) => (
-    <MaterialCommunityIcons name={name} color={color} size={size} />
-  );
+  return function TabIcon({ color, size }: { color: ColorValue; size: number }) {
+    return <MaterialCommunityIcons name={name} color={color} size={size} />;
+  };
 }
 
 export default function RootLayout() {
@@ -31,6 +31,7 @@ export default function RootLayout() {
                 tabBarActiveTintColor: paperTheme.colors.primary,
                 tabBarInactiveTintColor: paperTheme.colors.onSurfaceVariant,
                 tabBarStyle: { backgroundColor: paperTheme.colors.surface },
+                tabBarLabelStyle: { fontSize: 10 },
                 headerStyle: { backgroundColor: paperTheme.colors.surface },
                 headerTintColor: paperTheme.colors.onSurface,
               }}
@@ -40,8 +41,20 @@ export default function RootLayout() {
                 options={{ title: "Início", tabBarIcon: tabIcon("home-outline") }}
               />
               <Tabs.Screen
-                name="sobre"
-                options={{ title: "Sobre", tabBarIcon: tabIcon("account-outline") }}
+                name="academica"
+                options={{
+                  title: "Experiência Acadêmica",
+                  tabBarLabel: "Acadêmica",
+                  tabBarIcon: tabIcon("school-outline"),
+                }}
+              />
+              <Tabs.Screen
+                name="profissional"
+                options={{
+                  title: "Experiência Profissional",
+                  tabBarLabel: "Profissional",
+                  tabBarIcon: tabIcon("briefcase-outline"),
+                }}
               />
               <Tabs.Screen
                 name="projetos"
@@ -50,6 +63,10 @@ export default function RootLayout() {
               <Tabs.Screen
                 name="contato"
                 options={{ title: "Contato", tabBarIcon: tabIcon("message-text-outline") }}
+              />
+              <Tabs.Screen
+                name="sobre"
+                options={{ title: "Sobre", tabBarIcon: tabIcon("information-outline") }}
               />
             </Tabs>
           </ThemeProvider>

@@ -1,4 +1,6 @@
-const BASE_URL = (process.env.EXPO_PUBLIC_API_URL ?? "").replace(/\/$/, "");
+const API_URL_PADRAO = "https://backend-appport-src.vercel.app";
+
+export const BASE_URL = (process.env.EXPO_PUBLIC_API_URL || API_URL_PADRAO).replace(/\/$/, "");
 const TIMEOUT_MS = 15000;
 
 export class ApiError extends Error {
@@ -11,10 +13,6 @@ export class ApiError extends Error {
 }
 
 export async function apiGet<T>(path: string): Promise<T> {
-  if (!BASE_URL) {
-    throw new ApiError("EXPO_PUBLIC_API_URL não configurada no arquivo .env.local.", 0);
-  }
-
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
 

@@ -1,118 +1,76 @@
-import { Linking, StyleSheet, View } from "react-native";
-import { Chip, List, Text } from "react-native-paper";
+import { router } from "expo-router";
+import { StyleSheet, View } from "react-native";
+import { Button, Chip, List, Text } from "react-native-paper";
 
-import { CurriculoScreen } from "@/components/CurriculoScreen";
+import { BASE_URL } from "@/api/client";
+import { Screen } from "@/components/Screen";
 import { SectionCard } from "@/components/SectionCard";
 import { spacing } from "@/theme";
-import { mesAno, periodo, rotulo } from "@/utils/formatar";
+
+const TECNOLOGIAS_APP = [
+  { nome: "React Native", icone: "react" },
+  { nome: "Expo", icone: "cellphone" },
+  { nome: "Expo Router", icone: "routes" },
+  { nome: "React Native Paper", icone: "palette-outline" },
+  { nome: "TypeScript", icone: "language-typescript" },
+];
+
+const TECNOLOGIAS_BACK = [
+  { nome: "Node.js", icone: "nodejs" },
+  { nome: "Express", icone: "api" },
+  { nome: "Sequelize", icone: "database-cog-outline" },
+  { nome: "PostgreSQL (NeonDB)", icone: "database-outline" },
+  { nome: "Vercel", icone: "cloud-outline" },
+];
 
 export default function Sobre() {
   return (
-    <CurriculoScreen>
-      {(curriculo) => (
-        <>
-          {curriculo.resumo && (
-            <SectionCard title="Quem sou eu">
-              <Text variant="bodyMedium">{curriculo.resumo}</Text>
-            </SectionCard>
-          )}
+    <Screen>
+      <SectionCard title="Sobre o app">
+        <Text variant="bodyMedium">
+          Aplicativo de currículo/portfólio que busca todos os dados (perfil, experiências
+          acadêmicas e profissionais, projetos e contatos) em uma API REST própria. É possível
+          alternar entre os currículos cadastrados na tela Início.
+        </Text>
+      </SectionCard>
 
-          {curriculo.habilidades.length > 0 && (
-            <SectionCard title="Habilidades">
-              <View style={styles.chips}>
-                {curriculo.habilidades.map((habilidade) => (
-                  <Chip key={habilidade.id} compact>
-                    {habilidade.nome} · {rotulo(habilidade.nivel)}
-                  </Chip>
-                ))}
-              </View>
-            </SectionCard>
-          )}
+      <SectionCard title="Tecnologias do app">
+        <View style={styles.chips}>
+          {TECNOLOGIAS_APP.map((tecnologia) => (
+            <Chip key={tecnologia.nome} icon={tecnologia.icone} compact>
+              {tecnologia.nome}
+            </Chip>
+          ))}
+        </View>
+      </SectionCard>
 
-          {curriculo.experiencias.length > 0 && (
-            <SectionCard title="Experiência profissional">
-              {curriculo.experiencias.map((experiencia) => (
-                <List.Item
-                  key={experiencia.id}
-                  title={experiencia.cargo}
-                  description={[
-                    `${experiencia.empresa} · ${rotulo(experiencia.tipo)}`,
-                    periodo(experiencia.data_inicio, experiencia.data_fim),
-                    experiencia.descricao,
-                  ]
-                    .filter(Boolean)
-                    .join("\n")}
-                  descriptionNumberOfLines={6}
-                  left={(props) => <List.Icon {...props} icon="briefcase-outline" />}
-                  style={styles.listItem}
-                />
-              ))}
-            </SectionCard>
-          )}
+      <SectionCard title="Tecnologias da API">
+        <View style={styles.chips}>
+          {TECNOLOGIAS_BACK.map((tecnologia) => (
+            <Chip key={tecnologia.nome} icon={tecnologia.icone} compact>
+              {tecnologia.nome}
+            </Chip>
+          ))}
+        </View>
+        <List.Item
+          title="Endereço da API"
+          description={BASE_URL}
+          left={(props) => <List.Icon {...props} icon="web" />}
+          style={styles.listItem}
+        />
+      </SectionCard>
 
-          {curriculo.formacoes.length > 0 && (
-            <SectionCard title="Formação">
-              {curriculo.formacoes.map((formacao) => (
-                <List.Item
-                  key={formacao.id}
-                  title={formacao.curso}
-                  description={[
-                    `${formacao.instituicao} · ${rotulo(formacao.nivel)}`,
-                    periodo(formacao.data_inicio, formacao.data_fim),
-                    formacao.descricao,
-                  ]
-                    .filter(Boolean)
-                    .join("\n")}
-                  descriptionNumberOfLines={6}
-                  left={(props) => <List.Icon {...props} icon="school-outline" />}
-                  style={styles.listItem}
-                />
-              ))}
-            </SectionCard>
-          )}
-
-          {curriculo.certificacoes.length > 0 && (
-            <SectionCard title="Certificações">
-              {curriculo.certificacoes.map((certificacao) => (
-                <List.Item
-                  key={certificacao.id}
-                  title={certificacao.nome}
-                  description={[
-                    certificacao.emissor,
-                    mesAno(certificacao.data_emissao),
-                    certificacao.carga_horaria ? `${certificacao.carga_horaria}h` : null,
-                  ]
-                    .filter(Boolean)
-                    .join(" · ")}
-                  descriptionNumberOfLines={3}
-                  onPress={
-                    certificacao.url_credencial
-                      ? () => Linking.openURL(certificacao.url_credencial!)
-                      : undefined
-                  }
-                  left={(props) => <List.Icon {...props} icon="certificate-outline" />}
-                  style={styles.listItem}
-                />
-              ))}
-            </SectionCard>
-          )}
-
-          {curriculo.idiomas.length > 0 && (
-            <SectionCard title="Idiomas">
-              {curriculo.idiomas.map((idioma) => (
-                <List.Item
-                  key={idioma.id}
-                  title={idioma.idioma}
-                  description={rotulo(idioma.nivel)}
-                  left={(props) => <List.Icon {...props} icon="translate" />}
-                  style={styles.listItem}
-                />
-              ))}
-            </SectionCard>
-          )}
-        </>
-      )}
-    </CurriculoScreen>
+      <SectionCard title="Funcionalidade extra: compartilhar currículo">
+        <Text variant="bodyMedium">
+          Na tela Início, o botão “Compartilhar currículo” monta um resumo em texto com
+          experiências, formação, projetos, habilidades e contatos, e abre o menu de compartilhar
+          do celular para enviar por WhatsApp, e-mail ou qualquer outro app.
+        </Text>
+        <Button mode="contained-tonal" icon="share-variant" onPress={() => router.navigate("/")}>
+          Ir para o Início
+        </Button>
+      </SectionCard>
+    </Screen>
   );
 }
 

@@ -27,8 +27,9 @@ export function CurriculoProvider({ children }: { children: ReactNode }) {
     let ativo = true;
 
     listarPessoas()
-      .then((lista) => {
+      .then((resposta) => {
         if (!ativo) return;
+        const lista = [...resposta].sort((a, b) => a.id - b.id);
         setPessoas(lista);
         setPessoaId((atual) =>
           atual !== null && lista.some((p) => p.id === atual) ? atual : (lista[0]?.id ?? null),

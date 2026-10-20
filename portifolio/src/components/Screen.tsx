@@ -18,6 +18,8 @@ export function Screen({ children, refreshing = false, onRefresh }: Props) {
       style={{ backgroundColor: theme.colors.background }}
       contentContainerStyle={styles.content}
       contentInsetAdjustmentBehavior="automatic"
+      keyboardShouldPersistTaps="handled"
+      automaticallyAdjustKeyboardInsets
       refreshControl={
         onRefresh ? (
           <RefreshControl
