@@ -1,7 +1,8 @@
 import { router } from 'expo-router';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { Avatar, Button, Text, useTheme } from 'react-native-paper';
+import { Avatar, Button, Chip, Text, useTheme } from 'react-native-paper';
 
+import { isMockToken } from '@/api/auth';
 import { useAuth } from '@/auth/AuthContext';
 import { UserInfoCard } from '@/components/UserInfoCard';
 
@@ -15,7 +16,7 @@ function initials(name: string) {
 }
 
 export default function HomeScreen() {
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   const theme = useTheme();
 
   if (!user) return null;
@@ -30,6 +31,11 @@ export default function HomeScreen() {
         <Avatar.Text size={80} label={initials(user.name)} />
         <Text variant="headlineMedium">Olá, {user.name.split(' ')[0]}!</Text>
         <Text variant="bodyMedium">Bem-vindo ao meu aplicativo.</Text>
+        {isMockToken(token) && (
+          <Chip icon="cloud-off-outline" compact>
+            Modo demonstração (sem servidor)
+          </Chip>
+        )}
       </View>
 
       <UserInfoCard user={user} />

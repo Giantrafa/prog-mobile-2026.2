@@ -1,5 +1,5 @@
 const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? '';
-const TIMEOUT_MS = 15000;
+const TIMEOUT_MS = 10000;
 
 export class ApiError extends Error {
   constructor(
@@ -8,6 +8,10 @@ export class ApiError extends Error {
   ) {
     super(message);
   }
+}
+
+export function isOfflineError(error: unknown) {
+  return error instanceof ApiError && (error.status === 0 || [502, 503, 504].includes(error.status));
 }
 
 type RequestOptions = {

@@ -8,6 +8,11 @@ export default function AppLayout() {
         <NativeTabs.Trigger.Label>Início</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
 
+      <NativeTabs.Trigger name="tarefas">
+        <NativeTabs.Trigger.Icon sf="checklist" md="checklist" />
+        <NativeTabs.Trigger.Label>Tarefas</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+
       <NativeTabs.Trigger name="about">
         <NativeTabs.Trigger.Icon sf="info.circle.fill" md="info" />
         <NativeTabs.Trigger.Label>Sobre</NativeTabs.Trigger.Label>
